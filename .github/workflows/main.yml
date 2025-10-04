@@ -1,4 +1,4 @@
-name: William
+name: WindowsServer
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
           Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
           Restart-Service -Name TermService -Force
 
-      - name: Create RDP User
+      - name: Create William User
         run: |
           $password = -join ((33..126) | Get-Random -Count 16 | % {[char]$_})
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
